@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>srv</short-name>
+    <uri>http://example.com/elgrand</uri>
+    <tag>
+        <name>admin</name>
+        <tag-class>by.training.zakharchenya.courseproject.tag.AdminTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>role</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>user</name>
+        <tag-class>by.training.zakharchenya.courseproject.tag.UserTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>role</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>guest</name>
+        <tag-class>by.training.zakharchenya.courseproject.tag.GuestTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>role</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>notguest</name>
+        <tag-class>by.training.zakharchenya.courseproject.tag.NotGuestTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>role</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <function>
+        <name>base64Encoder</name>
+        <function-class>by.training.zakharchenya.courseproject.util.Base64Encoder</function-class>
+        <function-signature>java.lang.String encode(byte[])</function-signature>
+    </function>
+    <function>
+        <name>nullCheck</name>
+        <function-class>by.training.zakharchenya.courseproject.util.ParamHandler</function-class>
+        <function-signature>java.lang.String nullCheck(java.lang.String)</function-signature>
+    </function>
+
+    <!-- Invoke 'Generate' action to add tags or functions -->
+
+
+</taglib>

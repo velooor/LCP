@@ -1,0 +1,76 @@
+body {
+
+    padding-top: 70px;
+    padding-bottom: 70px;
+
+
+    background-image: url("kosti.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    background-attachment: fixed;
+
+}
+main {
+    min-height: 100vh;
+}
+.points{
+    font-family: 'Chewy', cursive;
+    font-size: 60px;
+    color: gray;
+}
+.casino {
+    font-family: 'Chewy', cursive;
+    font-size: 28px;
+    color: black;
+}
+.head {
+    font-family: 'Chewy', cursive;
+    font-size: 18px;
+    color: black;
+}
+
+#googleMap {
+    width: 100%;
+    height: 500px;
+}
+
+.imagemain{
+    width: 100%;
+    height: 500px;
+}
+/*.navbar{
+    !*opacity: 0.5;*!
+    background-color: rgba(0, 0, 0, 0.5);
+    border: transparent;
+    !*color: lawngreen;*!
+    transition: background-color 1s, color 1s;
+}
+.navbar:hover{
+    !*opacity: 0.5;*!
+    background-color: rgba(0, 0, 0, 1);
+    border: transparent;
+    !*color: lawngreen;*!
+}*/
+footer{
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    font-family: 'Chewy', cursive;
+    font-size: 20px;
+    color: black;
+}
+.jumbotron{
+    color: grey;
+    background-color: rgba(0, 0, 0, 0.5);
+   /* opacity: 0.5;*/
+    transition: background-color 1s, color 1s;
+}
+.jumbotron:hover{
+    color: white;
+    background-color: rgba(0, 0, 0, 1);
+    /* opacity: 0.5;*/
+}
+
+.flag-locale{
+    width: 20px;
+    height: 10px;
+}
