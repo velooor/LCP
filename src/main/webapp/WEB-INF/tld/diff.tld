@@ -6,7 +6,7 @@
         version="2.1">
 
     <tlib-version>1.0</tlib-version>
-    <short-name>srv</short-name>
+    <short-name>ttll</short-name>
     <uri>http://example.com/elgrand</uri>
     <tag>
         <name>admin</name>

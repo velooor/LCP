@@ -15,10 +15,19 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Random;
 
-
+/**
+ * Class of logic, that provides service functions, while working with game commands.
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 public class GameLogic {
-
     private static final Logger LOG = LogManager.getLogger();
+
+    /**Creates a multi game.
+     * @param bet game rate
+     * @param creatorId creator account id
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static void createGame(int bet, int creatorId) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
 
@@ -29,6 +38,12 @@ public class GameLogic {
             throw new LogicException("Problems with game creation operation.", e);
         }
     }
+
+    /**Starts multi game.
+     * @param gameId game id
+     * @param playerId player account id
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static void createMultiGame(int gameId, int playerId) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
 
@@ -39,6 +54,11 @@ public class GameLogic {
             throw new LogicException("Problems with multigame creation operation.", e);
         }
     }
+
+    /**Updates multi game.
+     * @param game game for update
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static void updateMultiGame(MultiGame game) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
 
@@ -49,6 +69,12 @@ public class GameLogic {
             throw new LogicException("Problems with multi game updating operation.", e);
         }
     }
+
+    /**Gives multi game by id.
+     * @param gameId game id
+     * @return multi game object
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static MultiGame findMultiGame(int gameId) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
 
@@ -60,7 +86,9 @@ public class GameLogic {
         }
     }
 
-
+    /**Loads waiting games.
+     * @return list of multi games
+     */
     public static List<MultiGame> loadWaitingGames(){
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             GameDAO gameDAO = new GameDAO(connection);
@@ -72,6 +100,11 @@ public class GameLogic {
             return null;
         }
     }
+
+    /**GLoads active user games.
+     * @param accountId account id
+     * @return list of multi games
+     */
     public static List<MultiGame> loadMyActiveGames(int accountId){
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             GameDAO gameDAO = new GameDAO(connection);
@@ -92,6 +125,9 @@ public class GameLogic {
             return null;
         }
     }
+    /**Deletes multi game by id.
+     * @param gameId game id
+     */
     public static void deleteGame(int gameId){
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             GameDAO gameDAO = new GameDAO(connection);
@@ -103,6 +139,10 @@ public class GameLogic {
 
         }
     }
+
+    /**Finishes multi game.
+     * @param game multi game object
+     */
     public static void processPlayerMove(MultiGame game){
         Random rm = new Random();
         int step = rm.nextInt(11)+2;
@@ -114,6 +154,10 @@ public class GameLogic {
             playerWon(game);
         }
     }
+
+    /**Finishes multi game.
+     * @param game multi game object
+     */
     public static void processCreatorMove(MultiGame game){
         Random rm = new Random();
         int step = rm.nextInt(11)+2;
@@ -125,6 +169,10 @@ public class GameLogic {
             creatorWon(game);
         }
     }
+
+    /**Finishes multi game.
+     * @param game multi game object
+     */
     public static void processPlayerPass(MultiGame game){
         game.setLastPlayerResult(-1);
         if(game.getLastCreatorResult() == -1){
@@ -137,6 +185,10 @@ public class GameLogic {
             }
         }
     }
+
+    /**Finishes multi game.
+     * @param game multi game object
+     */
     public static void processCreatorPass(MultiGame game){
         game.setLastCreatorResult(-1);
         if(game.getLastPlayerResult() == -1){
@@ -149,6 +201,10 @@ public class GameLogic {
             }
         }
     }
+
+    /**Finishes multi game.
+     * @param game multi game object
+     */
     public static void playerWon(MultiGame game){
         game.setFinished(true);
         game.setLastPlayerResult(-2);
@@ -158,6 +214,10 @@ public class GameLogic {
             LOG.log(Level.ERROR, "Problems with multi game finishing operation.", e);
         }
     }
+
+    /**Finishes multi game.
+     * @param game multi game object
+     */
     public static void creatorWon(MultiGame game){
         game.setFinished(true);
         game.setLastCreatorResult(-2);
@@ -167,6 +227,10 @@ public class GameLogic {
             LOG.log(Level.ERROR, "Problems with multi game finishing operation.", e);
         }
     }
+
+    /**Finishes multi game.
+     * @param game multi game object
+     */
     public static void draw(MultiGame game){
         game.setFinished(true);
         game.setLastCreatorResult(-3);

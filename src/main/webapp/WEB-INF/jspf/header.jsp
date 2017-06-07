@@ -20,15 +20,15 @@
                     </ul>
                 </li>
             </ul>
-            <srv:guest role="${visitor.role}">
+            <ttll:guest role="${visitor.role}">
                 <form class="navbar-form navbar-right">
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target=".sign-up-modal-lg"><fmt:message key="label.sign.up"/></button>
                 </form>
                 <form class="navbar-form navbar-right" id="signInForm" name="singin" action="/main" method="post">
 
-                        <input id="signInEmailOrLogin" type="text" class="form-control" name="INlogin" placeholder="<fmt:message key="label.email.or.login"/>" value="${srv:nullCheck(emailOrLogin)}">
+                        <input id="signInEmailOrLogin" type="text" class="form-control" name="INlogin" placeholder="<fmt:message key="label.email.or.login"/>" value="${ttll:nullCheck(emailOrLogin)}">
 
-                        <input id="signInPassword" type="password" class="form-control" name="INpassword" placeholder="<fmt:message key="label.password"/>" value="${srv:nullCheck(signInPassword)}">
+                        <input id="signInPassword" type="password" class="form-control" name="INpassword" placeholder="<fmt:message key="label.password"/>" value="${ttll:nullCheck(signInPassword)}">
 
                         <button type="submit" class="btn btn-primary"><fmt:message key="label.sign.in"/></button>
                     <p class="message">
@@ -39,21 +39,21 @@
                     <input type="hidden" name="command" value="login">
 
                 </form>
-            </srv:guest>
-            <srv:notguest role="${visitor.role}">
+            </ttll:guest>
+            <ttll:notguest role="${visitor.role}">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="head" href="${context}/jsp/user/profile_settings.jsp">${srv:nullCheck(account.name)} ${srv:nullCheck(account.surname)}</a></li>
+                    <li><a class="head" href="${context}/jsp/user/profile_settings.jsp">${ttll:nullCheck(account.name)} ${ttll:nullCheck(account.surname)}</a></li>
                     <li><a class="head" href="${context}/jsp/user/profile_settings.jsp"><img class="img-circle" height="28" width="28" src="${context}/main?command=loadImage&id=${account.accountId}&src=account" alt="Avatar"></a></li>
-                    <li><a id="MoneyAmount" class="head" href="${context}/jsp/user/profile_settings.jsp">${srv:nullCheck(creditBalance.moneyAmount)} $</a></li>
+                    <li><a id="MoneyAmount" class="head" href="${context}/jsp/user/profile_settings.jsp">${ttll:nullCheck(creditBalance.moneyAmount)} $</a></li>
                     <li><a class="head" href="${context}/jsp/user/messages.jsp"><fmt:message key="label.messages"/></a></li>
                         <li><a class="head" href="/main?command=logout"><fmt:message key="label.sign.out"/></a></li>
                 </ul>
-                <srv:admin role="${visitor.role}">
+                <ttll:admin role="${visitor.role}">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="head" href="${context}/jsp/admin/admin_settings.jsp"><fmt:message key="label.adminsettings"/></a></li>
                     </ul>
-                </srv:admin>
-            </srv:notguest>
+                </ttll:admin>
+            </ttll:notguest>
         </div>
     </div>
 </header>

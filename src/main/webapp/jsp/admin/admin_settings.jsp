@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="srv" uri="http://example.com/elgrand" %>
+<%@ taglib prefix="ttll" uri="http://example.com/elgrand" %>
 <fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="properties.pagecontent"/>
 <c:set var="context" value="${pageContext.request.contextPath}" />
@@ -40,11 +40,11 @@
             <form id="adminForm" action="${context}/main" method="post">
                 <div class="form-group-lg">
                     <label for="changeMinNumOfPoints"><fmt:message key="label.minnumofpoints"/></label>
-                    <input id="changeMinNumOfPoints" type="number" class="form-control" name="minNumOfPoints" placeholder="<fmt:message key="label.minnumofpoints"/>" value="${srv:nullCheck(minPoints)}"min="0" max="21">
+                    <input id="changeMinNumOfPoints" type="number" class="form-control" name="minNumOfPoints" placeholder="<fmt:message key="label.minnumofpoints"/>" value="${ttll:nullCheck(minPoints)}"min="0" max="21">
                 </div>
                 <div class="form-group-lg">
                     <label for="changeMinRate"><fmt:message key="label.minrate"/></label>
-                    <input id="changeMinRate" type="number" class="form-control" name="minRate" placeholder="<fmt:message key="label.minrate"/>" value="${srv:nullCheck(minRate)}" min="0" max="999999">
+                    <input id="changeMinRate" type="number" class="form-control" name="minRate" placeholder="<fmt:message key="label.minrate"/>" value="${ttll:nullCheck(minRate)}" min="0" max="999999">
                 </div>
                 <input type="hidden" name="command" value="changeAdmin">
             </form>

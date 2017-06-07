@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="srv" uri="http://example.com/elgrand" %>
+<%@ taglib prefix="ttll" uri="http://example.com/elgrand" %>
 <fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="properties.pagecontent"/>
 <c:set var="context" value="${pageContext.request.contextPath}" />
@@ -45,7 +45,7 @@
                             <input type="text" name="surname" class="form-control" placeholder="<fmt:message key="registration.surname"/>*"required pattern="^[A-Za-z]{1,}$"/>
                         </div>
                         <div class="form-group-lg">
-                                <input id="date" name="birthdate" class="form-control" placeholder="<fmt:message key="registration.birthdate"/>*" type="date" class="input" min="1850-01-01" max="2013-01-01" required>
+                                <input id="date" name="birthdate" class="form-control input" placeholder="<fmt:message key="registration.birthdate"/>*" type="date" min="1850-01-01" max="2013-01-01" required>
                         </div>
                         <div class="form-group-lg">
                             <input type="text" name="login" class="form-control" placeholder="<fmt:message key="registration.login"/>*" required  pattern="^[a-zA-Z](.[a-zA-Z0-9_-]*)$"/>
@@ -72,20 +72,7 @@
             </div>
         </div>
     </div>
-
-
     <%@include file="../../WEB-INF/jspf/content.jsp"%>
-       <%-- <hr class="featurette-divider">
-
-        <!-- /END THE FEATURETTES -->
-
-
-        <!-- FOOTER -->
-        <footer>
-            <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>© 2016 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-        </footer>--%>
-
 </main>
 
 

@@ -94,6 +94,7 @@ public class ConnectionPool {
 
     /**
      * Realize this class as singleton.
+     * @return Connection pool object
      */
     public static ConnectionPool getInstance() {
         if (!instanceCreated.get()) {

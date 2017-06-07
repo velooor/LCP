@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="srv" uri="http://example.com/elgrand" %>
+<%@ taglib prefix="ttll" uri="http://example.com/elgrand" %>
 <fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="properties.pagecontent"/>
 <html>
@@ -65,19 +65,13 @@
                         <form id="makeBetForm" name="makeBetForm" action="/main" method="post" onsubmit="return validateForm ( )">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <input type="number" name="bet" class="form-control"  value="" placeholder="${srv:nullCheck(creditBalance.moneyAmount)}" required min="${srv:nullCheck(minRate)}" max="${srv:nullCheck(creditBalance.moneyAmount)}">
+                                    <input type="number" name="bet" class="form-control"  value="" placeholder="${ttll:nullCheck(creditBalance.moneyAmount)}" required min="${ttll:nullCheck(minRate)}" max="${ttll:nullCheck(creditBalance.moneyAmount)}">
                                 </div>
                                 <div class="col-sm-9">
                                     $
                                 </div>
                             </div>
-                            <fmt:message key="label.min.bet.is"/>${srv:nullCheck(minRate)} $
-
-
-                            <%--<div class="text-center">
-                                <label class="radio"><input type="radio" name="vs" value="casino" checked><fmt:message key="label.vs.casino" /></label>
-                                <label class="radio"><input type="radio" name="vs" value="man"><fmt:message key="label.vs.man"/></label>
-                            </div>--%>
+                            <fmt:message key="label.min.bet.is"/>${ttll:nullCheck(minRate)} $
 
                             <input type="hidden" name="command" value="play">
 

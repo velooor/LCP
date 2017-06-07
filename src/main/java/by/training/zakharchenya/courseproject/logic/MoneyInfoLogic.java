@@ -11,9 +11,22 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * Created by Lagarde on 30.04.2017.
+ * Class of logic, that provides service functions, while working with money accounts commands.
+ * @author Vadim Zakharchenya
+ * @version 1.0
  */
 public class MoneyInfoLogic {
+
+    /**Processes payment.
+     * @param accountId account id
+     * @param creditcard credit card number
+     * @param ccv ccv code
+     * @param month month
+     * @param year year
+     * @param amount money amount to add to money account
+     * @return money amount
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static int processPayment(int accountId, String creditcard, String ccv, int month, int year, int amount) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             MoneyDAO moneyDAO = new MoneyDAO(connection);
@@ -23,6 +36,12 @@ public class MoneyInfoLogic {
             throw new LogicException("Problems with processPayment operation.", e);
         }
     }
+
+    /**Keeps amount of money.
+     * @param accountId account id
+     * @param rate credit card number
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static void keepRate(int accountId, int rate) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             connection.setAutoCommit(false);
@@ -34,6 +53,11 @@ public class MoneyInfoLogic {
             throw new LogicException("Problems with keepRate operation.", e);
         }
     }
+
+    /**Creates empty money account.
+     * @param accountId account id
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static void registerCreditAccount(int accountId) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             AccountDAO accountDAO = new AccountDAO(connection);
@@ -42,6 +66,12 @@ public class MoneyInfoLogic {
             throw new LogicException("Problems with registerCreditAccount operation.", e);
         }
     }
+
+    /**Return money amount.
+     * @param accountId account id
+     * @return money amount
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static int countCreditBalance(int accountId) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             MoneyDAO moneyDAO = new MoneyDAO(connection);
@@ -51,6 +81,11 @@ public class MoneyInfoLogic {
         }
     }
 
+    /**Return credit card info.
+     * @param accountId account id
+     * @return list of data
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static List<String> showCreditCardInfo(int accountId) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             MoneyDAO moneyDAO = new MoneyDAO(connection);
@@ -60,6 +95,11 @@ public class MoneyInfoLogic {
         }
     }
 
+    /**Finishes multi game.
+     * @param accountId account id
+     * @param rate account id
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static void casinoWon(int accountId, int rate) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             MoneyDAO moneyDAO = new MoneyDAO(connection);
@@ -68,6 +108,12 @@ public class MoneyInfoLogic {
             throw new LogicException("Problems with casinoWon operation.", e);
         }
     }
+
+    /**Finishes multi game.
+     * @param accountId account id
+     * @param rate account id
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static void playerWon(int accountId, int rate) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             connection.setAutoCommit(false);
@@ -79,6 +125,13 @@ public class MoneyInfoLogic {
             throw new LogicException("Problems with playerWon operation.", e);
         }
     }
+
+    /**Finishes multi game.
+     * @param winnerId winner account id
+     * @param loserId loser account id
+     * @param rate account id
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static void finishMultiGame(int winnerId, int loserId, int rate) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             connection.setAutoCommit(false);
@@ -91,6 +144,13 @@ public class MoneyInfoLogic {
             throw new LogicException("Problems with finishMultiGame operation.", e);
         }
     }
+
+    /**Finishes multi game as draw.
+     * @param playerId player account id
+     * @param creatorId creator account id
+     * @param rate rate
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static void finishMultiGameDraw(int playerId, int creatorId, int rate) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             connection.setAutoCommit(false);
@@ -104,6 +164,12 @@ public class MoneyInfoLogic {
             throw new LogicException("Problems with finishMultiGameDraw operation.", e);
         }
     }
+
+    /**Tops up money account.
+     * @param accountId account id
+     * @param rate rate
+     * @throws LogicException signals, that there are problems with dao
+     */
     public static void topUpAccount(int accountId, int rate) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()) {
             connection.setAutoCommit(false);

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="srv" uri="http://example.com/elgrand" %>
+<%@ taglib prefix="ttll" uri="http://example.com/elgrand" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <fmt:setLocale value="${locale}" scope="session"/>
 <fmt:setBundle basename="properties.pagecontent"/>
@@ -55,16 +55,16 @@
                         <label for="creditcard" class="control-label"><fmt:message key="label.creditcard"/>:</label>
                         <div class="row" id="creditcard">
                             <div class="col-sm-2">
-                                <input type="text" name="creditcard1" class="form-control"  value="${srv:nullCheck(cardFirst)}" placeholder="0000" required pattern="^[0-9]{4}$">
+                                <input type="text" name="creditcard1" class="form-control"  value="${ttll:nullCheck(cardFirst)}" placeholder="0000" required pattern="^[0-9]{4}$">
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" name="creditcard2" class="form-control"  value="${srv:nullCheck(cardSecond)}" placeholder="0000" required pattern="^[0-9]{4}$">
+                                <input type="text" name="creditcard2" class="form-control"  value="${ttll:nullCheck(cardSecond)}" placeholder="0000" required pattern="^[0-9]{4}$">
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" name="creditcard3" class="form-control"  value="${srv:nullCheck(cardThird)}" placeholder="0000" required pattern="^[0-9]{4}$">
+                                <input type="text" name="creditcard3" class="form-control"  value="${ttll:nullCheck(cardThird)}" placeholder="0000" required pattern="^[0-9]{4}$">
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" name="creditcard4" class="form-control"  value="${srv:nullCheck(cardFourth)}" placeholder="0000" required pattern="^[0-9]{4}$">
+                                <input type="text" name="creditcard4" class="form-control"  value="${ttll:nullCheck(cardFourth)}" placeholder="0000" required pattern="^[0-9]{4}$">
                             </div>
                             <div class="col-sm-4"></div>
                         </div>
@@ -83,13 +83,13 @@
                                 <label for="valid" class="control-label"><fmt:message key="label.valid"/></label>
                                 <div class="row" id="valid">
                                     <div class="col-sm-3">
-                                        <input type="number" name="validMonth" class="form-control"  value="${srv:nullCheck(cardMonth)}" placeholder="mm" required min="01" max="12" pattern="^[0-9]{2}$">
+                                        <input type="number" name="validMonth" class="form-control"  value="${ttll:nullCheck(cardMonth)}" placeholder="mm" required min="01" max="12" pattern="^[0-9]{2}$">
                                     </div>
                                     <div class="col-sm-1">
                                         /
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="number" name="validYear" class="form-control"  value="${srv:nullCheck(cardYear)}" placeholder="yy" required min="17" pattern="^[0-9]{2}$">
+                                        <input type="number" name="validYear" class="form-control"  value="${ttll:nullCheck(cardYear)}" placeholder="yy" required min="17" pattern="^[0-9]{2}$">
                                     </div>
                                     <div class="col-sm-5"></div>
                                 </div>
@@ -137,11 +137,11 @@
             <form id="changeNameForm" action="${context}/main" method="post">
                 <div class="form-group-lg">
                     <label for="changeFirstName"><fmt:message key="label.first.name"/></label>
-                    <input id="changeFirstName" type="text" class="form-control" name="firstName" placeholder="<fmt:message key="label.first.name"/>" value="${srv:nullCheck(account.name)}">
+                    <input id="changeFirstName" type="text" class="form-control" name="firstName" placeholder="<fmt:message key="label.first.name"/>" value="${ttll:nullCheck(account.name)}">
                 </div>
                 <div class="form-group-lg">
                     <label for="changeSecondName"><fmt:message key="label.second.name"/></label>
-                    <input id="changeSecondName" type="text" class="form-control" name="secondName" placeholder="<fmt:message key="label.second.name"/>" value="${srv:nullCheck(account.surname)}">
+                    <input id="changeSecondName" type="text" class="form-control" name="secondName" placeholder="<fmt:message key="label.second.name"/>" value="${ttll:nullCheck(account.surname)}">
                 </div>
                 <input type="hidden" name="command" value="changeName">
             </form>
@@ -158,7 +158,6 @@
             <img class="img-circle text-center" height="100" width="100" src="${context}/main?command=loadImage&id=${account.accountId}&src=account" alt="Avatar">
             <form id="changeAvatarForm" action="${context}/main" method="post" enctype="multipart/form-data">
                 <div class="form-group-lg">
-                    <label for="changeAvatar"><fmt:message key="label.avatar"/></label>
                     <input id="changeAvatar" type="file" name="avatar">
                 </div>
                 <input type="hidden" name="command" value="changeAvatar">

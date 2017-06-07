@@ -10,66 +10,32 @@
     <session-timeout>60</session-timeout>
   </session-config>
 
-  <!--filters order-->
-  <!--<filter-mapping>
+
+  <filter-mapping>
     <filter-name>EncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <filter-mapping>
-    <filter-name>XSSFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
+
   <filter-mapping>
     <filter-name>VisitorFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+
   <filter-mapping>
     <filter-name>CurrentPageFilter</filter-name>
     <url-pattern>/jsp/*</url-pattern>
   </filter-mapping>
+
   <filter-mapping>
-    <filter-name>AdminAccessFilter</filter-name>
+    <filter-name>AdminFilter</filter-name>
     <url-pattern>/jsp/admin/*</url-pattern>
   </filter-mapping>
+
   <filter-mapping>
-    <filter-name>UserAccessFilter</filter-name>
+    <filter-name>UserFilter</filter-name>
     <url-pattern>/jsp/user/*</url-pattern>
   </filter-mapping>
-  <filter-mapping>
-    <filter-name>GuestAccessFilter</filter-name>
-    <url-pattern>/jsp/guest/*</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>SurveyLoadFilter</filter-name>
-    <url-pattern>/jsp/user/main.jsp</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>ConductedSurveyLoadFilter</filter-name>
-    <url-pattern>/jsp/user/pass_survey.jsp</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>SurveyResultLoadFilter</filter-name>
-    <url-pattern>/jsp/user/survey_result.jsp</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>TopicLoadFilter</filter-name>
-    <url-pattern>/jsp/admin/edit_topic.jsp</url-pattern>
-    <url-pattern>/jsp/admin/remove_topic.jsp</url-pattern>
-    <url-pattern>/jsp/admin/topic_list.jsp</url-pattern>
-    <url-pattern>/jsp/admin/add_survey.jsp</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>AccountStatisticLoadFilter</filter-name>
-    <url-pattern>/jsp/admin/account_statistic.jsp</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>AccountLoadFilter</filter-name>
-    <url-pattern>/jsp/admin/account_list.jsp</url-pattern>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>MainServletFilter</filter-name>
-    <servlet-name>MainServlet</servlet-name>
-  </filter-mapping>-->
+
 
   <error-page>
     <error-code>400</error-code>

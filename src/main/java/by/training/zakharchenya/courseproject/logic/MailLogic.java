@@ -15,11 +15,25 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Class of logic, that provides service functions, while working with messages commands.
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 public class MailLogic {
     private static final Logger LOG = LogManager.getLogger();
     public enum Result {
         EXCEPTION, SUCCESS, WRONG_LOGIN, INCORRECT_LOGIN
     }
+
+    /**Sents new message in database.
+     * @param login addressee
+     * @param theme theme of the message
+     * @param message body of the message
+     * @param creatorId account id of creator of the message
+     * @param forAdmin true, if the message is for administrators
+     * @return corresponding result enum
+     */
     public static MailLogic.Result sendMessage(String login, String theme, String message, int creatorId, boolean forAdmin) {
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             connection.setAutoCommit(false);
@@ -47,6 +61,10 @@ public class MailLogic {
         }
     }
 
+    /**Deletes message by id in database.
+     * @param messageId message id
+     * @return corresponding result enum
+     */
     public static MailLogic.Result deleteMessage(int messageId) {
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             connection.setAutoCommit(false);
@@ -63,6 +81,12 @@ public class MailLogic {
             return MailLogic.Result.EXCEPTION;
         }
     }
+
+    /**Updates message status by id in database.
+     * @param isRead true, if message read
+     * @param messageId message id
+     * @return corresponding result enum
+     */
     public static MailLogic.Result updateMessage(boolean isRead, int messageId) {
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             connection.setAutoCommit(false);
@@ -79,6 +103,11 @@ public class MailLogic {
             return MailLogic.Result.EXCEPTION;
         }
     }
+
+    /**Updates message status by id in database.
+     * @param account true, if message read
+     * @return list of messages
+     */
     public static List<Message> loadAllUserIncomingMessages(Account account){
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             connection.setAutoCommit(false);

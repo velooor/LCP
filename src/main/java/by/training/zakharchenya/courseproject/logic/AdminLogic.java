@@ -12,7 +12,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-/** Class DAO, serves for working with accounts in database
+/**
+ * Class of logic, that provides service functions, while working with admin commands.
  * @author Vadim Zakharchenya
  * @version 1.0
  */
@@ -21,6 +22,12 @@ public class AdminLogic {
     public enum Result {
         EXCEPTION, SUCCESS, WRONG_LOGIN, INCORRECT_LOGIN
     }
+
+    /**Updates user status.
+     * @param isActive user state
+     * @param userId user id
+     * @return result enum
+     */
     public static Result updateUserStatus(boolean isActive, int userId) {
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             connection.setAutoCommit(false);
@@ -37,6 +44,9 @@ public class AdminLogic {
             return Result.EXCEPTION;
         }
     }
+    /**Load all users.
+     * @return list of users
+     */
     public static List<Account> loadAllUsers(){
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             connection.setAutoCommit(false);
@@ -51,6 +61,9 @@ public class AdminLogic {
             return null;
         }
     }
+    /**Load admin params.
+     * @return list of params
+     */
     public static List<Integer> loadParams(){
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             connection.setAutoCommit(false);
