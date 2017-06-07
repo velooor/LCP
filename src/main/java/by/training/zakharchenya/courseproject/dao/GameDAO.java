@@ -60,9 +60,10 @@ public class GameDAO  extends AbstractDAO {
         super(connection);
     }
 
-    /**Updates account state by ID in database.
-     * @param bet value to update
-     * @param creatorId account ID
+    /**Adds not active game in database.
+     * @param bet value to add
+     * @param creatorId account id of creator
+     * @return true if everything is successful
      * @throws DAOException signals, that statement was not executed successfully
      */
     public boolean addGame(int bet, int creatorId) throws DAOException {
@@ -79,6 +80,12 @@ public class GameDAO  extends AbstractDAO {
         }
     }
 
+    /**Updates multi game in database.
+     * @param gameId id of current game
+     * @param playerId account id of player
+     * @return true if everything is successful
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public boolean updateMultiGame(int gameId, int playerId) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_MULTI_GAME)) {
             statement.setInt(1, playerId);
@@ -90,6 +97,11 @@ public class GameDAO  extends AbstractDAO {
         }
     }
 
+    /**Updates multi game in database.
+     * @param game game which replace one in database
+     * @return true if everything is successful
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public boolean updateMultiGame(MultiGame game) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_MULTI_GAME_BY_ID)) {
             statement.setInt(1, game.getPlayerScore());
@@ -106,7 +118,10 @@ public class GameDAO  extends AbstractDAO {
         }
     }
 
-
+    /**Look for waiting games in database.
+     * @return list of waiting games
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public List<MultiGame> findWaitingGames() throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_WAITING_GAMES)) {
             List<MultiGame> multiGames = new ArrayList<>();
@@ -131,6 +146,12 @@ public class GameDAO  extends AbstractDAO {
             throw new DAOException("Problems with database.", e);
         }
     }
+
+    /**Look for active games in database.
+     * @param accountId account id of creator of the games
+     * @return list of active creator's games
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public List<MultiGame> findMyActiveGames(int accountId) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_MY_ACTIVE_GAMES)) {
             statement.setInt(1, accountId);
@@ -163,6 +184,12 @@ public class GameDAO  extends AbstractDAO {
             throw new DAOException("Problems with database.", e);
         }
     }
+
+    /**Look for active games in database.
+     * @param accountId account id of creator of the games
+     * @return list of active creator's games
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public List<MultiGame> findMyActiveGamesAlt(int accountId) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_MY_ACTIVE_GAMES_ALT)) {
             statement.setInt(1, accountId);
@@ -195,6 +222,11 @@ public class GameDAO  extends AbstractDAO {
             throw new DAOException("Problems with database.", e);
         }
     }
+
+    /**Removes game with its id in database.
+     * @param id game id
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public void removeGameById(int id) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_REMOVE_GAME_BY_ID)) {
             statement.setInt(1, id);
@@ -204,6 +236,11 @@ public class GameDAO  extends AbstractDAO {
         }
     }
 
+    /**Look for game in database.
+     * @param gameId game id
+     * @return found game
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public MultiGame findMultiGame(int gameId) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_MULTI_GAME_BY_ID)) {
             statement.setInt(1, gameId);
@@ -225,7 +262,6 @@ public class GameDAO  extends AbstractDAO {
             else {
                 throw new DAOException("Can't find account by id in database.");
             }
-
         } catch (SQLException e) {
             throw new DAOException("Problems with finding account by id in database.", e);
         }

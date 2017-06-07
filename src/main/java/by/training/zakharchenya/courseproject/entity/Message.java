@@ -2,6 +2,10 @@ package by.training.zakharchenya.courseproject.entity;
 
 import java.time.LocalDateTime;
 
+/** Entity class, serves for processing relative object Message from database.
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 public class Message {
     private int messageId;
     private Account creator;

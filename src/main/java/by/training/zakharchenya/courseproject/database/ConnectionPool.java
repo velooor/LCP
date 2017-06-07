@@ -9,14 +9,14 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- *
+/** Class is responsible for presenting connections to the application.
+ * @author Vadim Zakharchenya
+ * @version 1.0
  */
 public class ConnectionPool {
     private static final Logger LOG = LogManager.getLogger();
@@ -30,6 +30,9 @@ public class ConnectionPool {
     private static Lock closePoolLock = new ReentrantLock(true);
     private static int realPoolSize = 0;
 
+    /**
+     * Private constructor. Is unavailable outside the class
+     */
     private ConnectionPool() {
         initializer = new DBInitializer();
         connections = new ArrayBlockingQueue<>(initializer.POOL_SIZE, true);
@@ -56,6 +59,9 @@ public class ConnectionPool {
         LOG.log(Level.INFO, "Real connection pool size : " + realPoolSize);
     }
 
+    /**
+     * Process reconnection to database.
+     */
     private void reconnect() {
         try {
             for (int i = 0; i < initializer.RECONNECTION_AMOUNT && realPoolSize < initializer.POOL_SIZE; ++i) {
@@ -68,6 +74,9 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Process connection to database.
+     */
     private void connect() {
         int needConnections = initializer.POOL_SIZE - realPoolSize;
         for (int i = 0; i < needConnections; ++i) {
@@ -83,6 +92,9 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Realize this class as singleton.
+     */
     public static ConnectionPool getInstance() {
         if (!instanceCreated.get()) {
             singletonLock.lock();
@@ -98,6 +110,9 @@ public class ConnectionPool {
         return pool;
     }
 
+    /**Gives connection from connection pool.
+     * @return Connection object
+     */
     public Connection getConnection() {
         Connection connection = null;
         if (!poolClosed.get()) {
@@ -110,10 +125,17 @@ public class ConnectionPool {
         return connection;
     }
 
+    /**
+     * Returns connection to pool.
+     */
     void closeConnection(ProxyConnection connection) {
         connections.add(connection);
     }
 
+
+    /**
+     * Closes pool.
+     */
     public void closePool() {
         if (!poolClosed.get()) {
             closePoolLock.lock();

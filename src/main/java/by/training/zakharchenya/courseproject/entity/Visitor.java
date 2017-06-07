@@ -1,8 +1,11 @@
 package by.training.zakharchenya.courseproject.entity;
 
-import java.io.Serializable;
 import java.util.Locale;
 
+/** Entity class, serves for processing relative object Visitor from database.
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 public class Visitor {
     public enum Role {
         ADMIN, USER, GUEST

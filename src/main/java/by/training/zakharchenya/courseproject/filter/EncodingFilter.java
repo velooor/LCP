@@ -6,7 +6,9 @@ import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
 
 /**
- *
+ * Filter class, serves to process data encoding.
+ * @author Vadim Zakharchenya
+ * @version 1.0
  */
 @WebFilter(filterName = "EncodingFilter", urlPatterns = {"/*"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD},
         initParams = {@WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Param")})

@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- *
+ * Filter class, serves to prevent unauthorized access to the system.
+ * @author Vadim Zakharchenya
+ * @version 1.0
  */
 @WebFilter(filterName = "UserFilter", urlPatterns = {"/jsp/user/*"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class UserFilter implements Filter {

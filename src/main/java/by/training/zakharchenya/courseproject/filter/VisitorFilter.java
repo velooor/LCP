@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 /**
- *
+ * Filter class, is responsible for working with visitors.
+ * @author Vadim Zakharchenya
+ * @version 1.0
  */
 @WebFilter(filterName = "VisitorFilter", urlPatterns = {"/*"})
 public class VisitorFilter implements Filter {

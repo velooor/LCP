@@ -5,6 +5,10 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
+/** Class is responsible for wrapping connection.
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 class ProxyConnection implements Connection {
 
     private Connection connection;

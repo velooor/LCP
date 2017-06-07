@@ -4,8 +4,9 @@ import by.training.zakharchenya.courseproject.entity.Account;
 
 import java.util.List;
 
-/**
- * Created by Lagarde on 10.05.2017.
+/** Entity class, serves for processing relative object Game from database.
+ * @author Vadim Zakharchenya
+ * @version 1.0
  */
 public class SingleGame {
     private Account player;

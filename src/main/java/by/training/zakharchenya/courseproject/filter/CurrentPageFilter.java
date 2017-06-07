@@ -9,6 +9,11 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+/**
+ * Filter class, serves to work and process user current page.
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 @WebFilter(filterName = "CurrentPageFilter",  urlPatterns = {"/jsp/*"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class CurrentPageFilter implements Filter {
 
@@ -17,7 +22,7 @@ public class CurrentPageFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         Visitor visitor = (Visitor)request.getSession().getAttribute(Constants.VISITOR_KEY);
         String uri = URIAnalyzer.cleanURI(request.getRequestURI().substring(request.getContextPath().length()));
-        if (URIAnalyzer.isPageURI(uri)) {//FIXME: what about 404. z.jsp
+        if (URIAnalyzer.isPageURI(uri)) {
             visitor.setCurrentPage(uri);
         }
         filterChain.doFilter(servletRequest, servletResponse);

@@ -3,6 +3,10 @@ package by.training.zakharchenya.courseproject.entity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/** Entity class, serves for processing relative object CreditBalance from database.
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 public class CreditBalance {
     private int moneyAmount;
     private int dept;
@@ -46,7 +50,6 @@ public class CreditBalance {
 
     public String toXml() {
         StringBuffer xml = new StringBuffer();
-        //xml.append("<?xml version=\"1.0\"?>\n");
         xml.append("<CreditBalance>");
         xml.append("<moneyAmount>"+moneyAmount+"</moneyAmount>");
 

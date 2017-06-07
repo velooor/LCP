@@ -10,10 +10,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Lagarde on 02.04.2017.
+/** Class DAO, serves for working with mail data in database
+ * @author Vadim Zakharchenya
+ * @version 1.0
  */
-public class MailDAO extends AbstractDAO {//TODO: handle is_available
+public class MailDAO extends AbstractDAO {
 
     private static final String SQL_ADD_MESSAGE ="INSERT INTO `message` (`creator`, `addressee`, `isRead`, `creationTime`, `message`, `theme`) "
                                                                     +"VALUES (?, ?, FALSE, ?, ?, ?)";
@@ -51,6 +52,16 @@ public class MailDAO extends AbstractDAO {//TODO: handle is_available
         super(connection);
     }
 
+    /**Adds new message in database.
+     * @param login addressee
+     * @param theme theme of the message
+     * @param message body of the message
+     * @param creatorId account id of creator of the message
+     * @param forAdmin true, if the message is for administrators
+     * @param accountDAO AccountDAO object
+     * @return true if everything is successful
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public boolean addMessage(String login, String theme, String message, int creatorId, boolean forAdmin, AccountDAO accountDAO) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_ADD_MESSAGE, Statement.RETURN_GENERATED_KEYS)) {
             if(forAdmin){
@@ -81,6 +92,11 @@ public class MailDAO extends AbstractDAO {//TODO: handle is_available
         }
     }
 
+    /**Finds all messages by account id in database.
+     * @param accountId account id of addressee
+     * @return list of messages
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public List<Message> findAllMessagesByAccountId(int accountId) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_INCOME_MESSAGES_BY_ACCOUNT_ID)) {
             List<Message> messages = new ArrayList<>();
@@ -106,6 +122,10 @@ public class MailDAO extends AbstractDAO {//TODO: handle is_available
         }
     }
 
+    /**Removes message in database.
+     * @param id game id
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public void removeMessageById(int id) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_REMOVE_MESSAGE_BY_ID)) {
             statement.setInt(1, id);
@@ -114,6 +134,12 @@ public class MailDAO extends AbstractDAO {//TODO: handle is_available
             throw new DAOException("Problems with database.", e);
         }
     }
+
+    /**Updates message status by id in database.
+     * @param isRead account id of addressee
+     * @param id game id
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public void updateMessageById(boolean isRead, int id) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_ISREAD_BY_MESSAGE_ID)) {
             statement.setBoolean(1, isRead);

@@ -1,10 +1,12 @@
 package by.training.zakharchenya.courseproject.entity;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.sql.Date;
-import java.util.Objects;
 
+/** Entity class, serves for processing relative object Account from database.
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 public class Account {
     public enum StatusEnum {
         ACTIVE, BANNED

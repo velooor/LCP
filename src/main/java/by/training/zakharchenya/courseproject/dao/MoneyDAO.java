@@ -1,20 +1,15 @@
 package by.training.zakharchenya.courseproject.dao;
 
-
-import by.training.zakharchenya.courseproject.entity.Account;
-import by.training.zakharchenya.courseproject.entity.Message;
 import by.training.zakharchenya.courseproject.exception.DAOException;
-
-import java.io.ByteArrayInputStream;
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Lagarde on 02.04.2017.
+/** Class DAO, serves for working with finance data in database
+ * @author Vadim Zakharchenya
+ * @version 1.0
  */
-public class MoneyDAO extends AbstractDAO {//TODO: handle is_available
+public class MoneyDAO extends AbstractDAO {
 
     private static final String SQL_ADD_PAYMENT ="UPDATE `creditcardinfo` SET `creditCard`=?, `cardValid`=?, `secretCode`=?, `moneyAmount`=`moneyAmount`+? "
             +" WHERE `account` = ?";
@@ -39,6 +34,16 @@ public class MoneyDAO extends AbstractDAO {//TODO: handle is_available
         super(connection);
     }
 
+    /**Adds money to money account in database.
+     * @param accountId account id
+     * @param creditcard credit card number
+     * @param ccv code CCV
+     * @param month month
+     * @param year year
+     * @param amount account amount
+     * @return true if everything is successful
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public boolean addPayment(int accountId, String creditcard, String ccv, int month, int year, int amount) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_ADD_PAYMENT, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, creditcard);
@@ -52,16 +57,13 @@ public class MoneyDAO extends AbstractDAO {//TODO: handle is_available
             throw new DAOException("Problems with database.", e);
         }
     }
-    public boolean updateAmount(int accountId, int amount) throws DAOException {
-        try (PreparedStatement statement = connection.prepareStatement(SQL_UPDATE_AMOUNT)) {
-            statement.setInt(1, amount);
-            statement.setInt(2, accountId);
-            statement.execute();
-            return true;
-        } catch (SQLException e) {
-            throw new DAOException("Problems with database.", e);
-        }
-    }
+
+    /**Reduces money account in database.
+     * @param accountId account id
+     * @param amount account amount
+     * @return true if everything is successful
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public boolean downAmount(int accountId, int amount) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_DOWN_AMOUNT)) {
             statement.setInt(1, amount);
@@ -72,6 +74,13 @@ public class MoneyDAO extends AbstractDAO {//TODO: handle is_available
             throw new DAOException("Problems with database.", e);
         }
     }
+
+    /**Reduces blocked money account in database.
+     * @param accountId account id
+     * @param amount account amount
+     * @return true if everything is successful
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public boolean downBlockedAmount(int accountId, int amount) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_DOWN_BLOCKED_AMOUNT)) {
             statement.setInt(1, amount);
@@ -82,6 +91,13 @@ public class MoneyDAO extends AbstractDAO {//TODO: handle is_available
             throw new DAOException("Problems with database.", e);
         }
     }
+
+    /**Top up blocked money account in database.
+     * @param accountId account id
+     * @param amount account amount
+     * @return true if everything is successful
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public boolean topUpBlockedAmount(int accountId, int amount) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_TOPUP_BLOCKED_AMOUNT)) {
             statement.setInt(1, amount);
@@ -92,6 +108,12 @@ public class MoneyDAO extends AbstractDAO {//TODO: handle is_available
             throw new DAOException("Problems with database.", e);
         }
     }
+
+    /**Gets money amount in database.
+     * @param accountId account id
+     * @return money amount
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public int countCreditBalance(int accountId) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_COUNT_MONEY_BALANCE)) {
             statement.setInt(1, accountId);
@@ -104,6 +126,12 @@ public class MoneyDAO extends AbstractDAO {//TODO: handle is_available
             throw new DAOException("Problems with database.", e);
         }
     }
+
+    /**Gets credit card info in database.
+     * @param accountId account id
+     * @return credit card info
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public List<String> showCreditCardInfo(int accountId) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_FIND_CREDIT_CARD_INFO)) {
             statement.setInt(1, accountId);
@@ -121,6 +149,13 @@ public class MoneyDAO extends AbstractDAO {//TODO: handle is_available
             throw new DAOException("Problems with database.", e);
         }
     }
+
+    /**Tops up money account in database.
+     * @param accountId account id
+     * @param amount money amount
+     * @return true if everything is successful
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public boolean topUpAmount(int accountId, int amount) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_TOPUP_AMOUNT)) {
             statement.setInt(1, amount);

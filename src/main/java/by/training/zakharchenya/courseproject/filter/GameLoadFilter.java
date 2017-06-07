@@ -9,22 +9,29 @@ import by.training.zakharchenya.courseproject.servlet.Constants;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Filter class, serves to upload list of multi games before opening corresponding pages.
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 @WebFilter(filterName = "GameLoadFilter", urlPatterns = {"/jsp/user/waitForGame.jsp"}, dispatcherTypes = {DispatcherType.FORWARD, DispatcherType.REQUEST})
 public class GameLoadFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpSession ses = request.getSession();
 
         List<MultiGame> waitingGames;
         List<MultiGame> notMyNotActive = new ArrayList();
         List<MultiGame> myNotActive = new ArrayList();
-        Account account = (Account) request.getSession().getAttribute(Constants.ACCOUNT_KEY);
-        CreditBalance cb = (CreditBalance)request.getSession().getAttribute(Constants.CREDIT_BALANCE_KEY);
+        Account account = (Account) ses.getAttribute(Constants.ACCOUNT_KEY);
+        CreditBalance cb = (CreditBalance)ses.getAttribute(Constants.CREDIT_BALANCE_KEY);
         int rate = cb.getMoneyAmount();
         waitingGames = GameLogic.loadWaitingGames();
         if(waitingGames != null){
@@ -49,23 +56,20 @@ public class GameLoadFilter implements Filter {
                 }
             }
         }
-
-        request.getSession().setAttribute(Constants.FINISHED_GAMES_KEY, finishedGames);
-        request.getSession().setAttribute(Constants.NOT_FINISHED_GAMES_KEY, notFinishedGames);
-        request.getSession().setAttribute(Constants.MY_NOT_ACTIVE_GAMES_KEY, myNotActive);
-        request.getSession().setAttribute(Constants.NOT_MY_NOT_ACTIVE_GAMES_KEY, notMyNotActive);
+        ses.setAttribute(Constants.FINISHED_GAMES_KEY, finishedGames);
+        ses.setAttribute(Constants.NOT_FINISHED_GAMES_KEY, notFinishedGames);
+        ses.setAttribute(Constants.MY_NOT_ACTIVE_GAMES_KEY, myNotActive);
+        ses.setAttribute(Constants.NOT_MY_NOT_ACTIVE_GAMES_KEY, notMyNotActive);
 
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
     public void destroy() {
-
     }
 
 }

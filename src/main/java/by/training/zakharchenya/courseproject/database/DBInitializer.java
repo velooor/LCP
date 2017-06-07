@@ -7,11 +7,11 @@ import org.apache.logging.log4j.Logger;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-/**
- *
+/** Class is responsible for initializing parameters for driver manager.
+ * @author Vadim Zakharchenya
+ * @version 1.0
  */
 class DBInitializer {
-
     private static final Logger LOG = LogManager.getLogger();
 
     final String DRIVER;

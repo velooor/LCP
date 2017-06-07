@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- *
+ * Filter class, serves to prevent unauthorized access to the administrator settings.
+ * @author Vadim Zakharchenya
+ * @version 1.0
  */
 @WebFilter(filterName = "AdminFilter", urlPatterns = {"/jsp/admin/*"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class AdminFilter implements Filter {

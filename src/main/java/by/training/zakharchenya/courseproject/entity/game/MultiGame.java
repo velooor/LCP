@@ -5,7 +5,10 @@ import by.training.zakharchenya.courseproject.entity.CreditBalance;
 
 import java.time.LocalDateTime;
 
-
+/** Entity class, serves for processing relative object Game from database.
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 public class MultiGame {
     private int gameId;
     private LocalDateTime time;

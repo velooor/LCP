@@ -1,10 +1,8 @@
 package by.training.zakharchenya.courseproject.logic;
 
 import by.training.zakharchenya.courseproject.dao.AdminDAO;
-import by.training.zakharchenya.courseproject.dao.MailDAO;
 import by.training.zakharchenya.courseproject.database.ConnectionPool;
 import by.training.zakharchenya.courseproject.entity.Account;
-import by.training.zakharchenya.courseproject.entity.Message;
 import by.training.zakharchenya.courseproject.exception.DAOException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -14,8 +12,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+/** Class DAO, serves for working with accounts in database
+ * @author Vadim Zakharchenya
+ * @version 1.0
+ */
 public class AdminLogic {
-
     private static final Logger LOG = LogManager.getLogger();
     public enum Result {
         EXCEPTION, SUCCESS, WRONG_LOGIN, INCORRECT_LOGIN
