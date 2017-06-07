@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.sql.Date;
 import java.util.Objects;
 
-public class Account implements IDatabaseEntity {
+public class Account {
     public enum StatusEnum {
         ACTIVE, BANNED
     }

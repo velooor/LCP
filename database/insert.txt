@@ -1,0 +1,4 @@
+INSERT INTO `adminstration` (`minNumOfPoints`, `minRate`) VALUES ('14', '10');
+INSERT INTO `elgrand_casino`.`account` (`login`, `email`, `password`, `name`, `surname`, `admin`, `status`, `numOfVictories`, `numOfGames`, `birthDate`) VALUES ('admin', 'velooor@gmail.com', '6396mvad', 'Vadim', 'Zakharchenya', '1', 'active', '0', '0', '1996-06-19');
+INSERT INTO `elgrand_casino`.`creditcardinfo` (`account`, `creditCard`, `cardValid`, `secretCode`, `moneyAmount`, `blockedMoney`) VALUES ('1', '1234123412341234', '2025-10-10', '123', '1000', '0');
+INSERT INTO `elgrand_casino`.`account` (`login`, `email`, `password`, `name`, `surname`, `admin`, `status`, `numOfVictories`, `numOfGames`, `birthDate`) VALUES ('kirill', 'kir@gmail.com', '6396mvad', 'Kirill', 'Alimov', '0', 'active', '0', '0', '1995-06-11');

@@ -108,11 +108,6 @@
                             </div>
                         </div>
 
-                        <%--<div class="form-group">
-                            <label for="message" class="control-label"><fmt:message key="label.yourmessage"/></label>
-                            <textarea id="message" name="message" class="form-control" rows="3" placeholder="<fmt:message key="label.yourmessage"/>" minlength="1" maxlength="500" required></textarea>
-                        </div>--%>
-
                         <input type="hidden" name="command" value="topupaccount">
                         <p class="message">
                             ${NewMessageMessage}
@@ -160,6 +155,7 @@
             <h2 class="panel-title text-center"><fmt:message key="label.avatar"/></h2>
         </div>
         <div class="panel-body">
+            <img class="img-circle text-center" height="100" width="100" src="${context}/main?command=loadImage&id=${account.accountId}&src=account" alt="Avatar">
             <form id="changeAvatarForm" action="${context}/main" method="post" enctype="multipart/form-data">
                 <div class="form-group-lg">
                     <label for="changeAvatar"><fmt:message key="label.avatar"/></label>

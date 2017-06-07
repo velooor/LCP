@@ -11,10 +11,6 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-sign-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <%--<button type="button" onclick="window.location.href='${context}/main?command=locale&language=ru-RU'" class="flag-locale pull-right"><img src="${context}/rf-locale.jpg" alt="" height="20" width="40"> </button>
-                <a href=""${context}/main?command=locale&language=en-US">
-                    <img src="${context}/rf-locale.jpg" alt="" height="20" width="40">
-                </a>--%>
 
                 <li class="dropdown">
                     <a href="#" class="head dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><fmt:message key="label.lang"/><span class="caret"></span></a>
@@ -23,13 +19,6 @@
                         <li class="text-center" src="rf-locale.jpg"><a href="${context}/main?command=locale&language=ru-RU"><img src="${context}/rf-locale.jpg" alt="" height="30" width="40"></a></li>
                     </ul>
                 </li>
-                <%--<li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><fmt:message key="label.lang"/><span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="text-center"><a href="${context}/main?command=locale&language=en-US"><fmt:message key="label.language.english"/></a></li>
-                        <li class="text-center" src="rf-locale.jpg"><a href="${context}/main?command=locale&language=ru-RU"><fmt:message key="label.language.russian"/></a></li>
-                    </ul>
-                </li>--%>
             </ul>
             <srv:guest role="${visitor.role}">
                 <form class="navbar-form navbar-right">

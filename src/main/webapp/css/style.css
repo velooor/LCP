@@ -74,3 +74,22 @@ footer{
     width: 20px;
     height: 10px;
 }
+
+.buttonPicture{
+    width: 400px;
+    height: 200px;
+    opacity: 0.8;
+    transition:  opacity 1s;
+}
+.buttonPicture:hover{
+    opacity: 1;
+}
+
+.visText{
+    color: lightgray;
+    transition: color 1s;
+}
+.visText:hover{
+    color: greenyellow;
+
+}

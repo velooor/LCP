@@ -40,13 +40,18 @@
             <h3><fmt:message key="main.welcome"/></h3>
         </div>
 
-        <div class="row">
-            <button type="button" class="btn btn-primary col-lg-12" data-toggle="modal" data-target=".rate-settings-modal-lg"><fmt:message key="label.play"/></button>
+        <div class="row text-center">
+            <div class="text-center col-lg-6 visText">
+                <a class="buttonPicture" data-toggle="modal" data-target=".rate-settings-modal-lg"><img src="${context}/images/single.jpg" alt="" height="200" ></a>
+                <a class="buttonPicture" data-toggle="modal" data-target=".rate-settings-modal-lg"><h1 class="visText"><fmt:message key="label.single.game"/></h1></a>
+            </div>
+            <div class="text-center col-lg-6 visText">
+                <a href="${context}/jsp/user/waitForGame.jsp" class="buttonPicture"><img src="${context}/images/mulri.jpg" alt="" height="200" ></a>
+                <a href="${context}/jsp/user/waitForGame.jsp" class="buttonPicture"> <h1 class="visText"><fmt:message key="label.multi.game"/></h1></a>
+            </div>
+
         </div>
-        <br>
-        <form action="${context}/jsp/user/waitForGame.jsp">
-            <button type="submit" class="btn btn-primary col-lg-12"><fmt:message key="label.multi.multiGame"/></button>
-        </form>
+
         <br><br>
 
         <div class="modal fade rate-settings-modal-lg" tabindex="-1" role="dialog" aria-labelledby="RateSettings">
@@ -88,6 +93,7 @@
 
             </div>
         </div>
+        <br>
         <%@include file="../../WEB-INF/jspf/content.jsp"%>
     </main>
 

@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Lagarde on 13.04.2017.
- */
 @WebFilter(filterName = "AccountListFilter", urlPatterns = {"/jsp/admin/admin_settings.jsp"}, dispatcherTypes = {DispatcherType.FORWARD, DispatcherType.REQUEST})
 public class AccountListFilter implements Filter {
 

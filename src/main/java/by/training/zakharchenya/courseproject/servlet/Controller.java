@@ -52,13 +52,7 @@ public class Controller extends HttpServlet {
             }else if(request.getSession().getAttribute(STATE_KEY) == Constants.State.AJAX){
                 response.setContentType("text/xml");
                 response.setHeader("Cache-Control", "no-cache");
-                //try{
-                    //JSONObject res = new JSONObject(result);
                     response.getWriter().write(result);
-                //} catch (JSONException e){
-
-                //}
-
             }
             else{
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(result);

@@ -1,20 +1,16 @@
 package by.training.zakharchenya.courseproject.entity;
 
-/**
- * Created by Lagarde on 16.03.2017.
- */
 import java.io.Serializable;
 import java.util.Locale;
-import java.util.Objects;
 
-public class Visitor implements Serializable {
+public class Visitor {
     public enum Role {
         ADMIN, USER, GUEST
     }
 
     private Role role;
-    private Locale locale; // TODO: delete
-    private String currentPage; // TODO: ??
+    private Locale locale;
+    private String currentPage;
     private Account.StatusEnum status;
 
     public Visitor() {

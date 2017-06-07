@@ -60,6 +60,11 @@ public class GameDAO  extends AbstractDAO {
         super(connection);
     }
 
+    /**Updates account state by ID in database.
+     * @param bet value to update
+     * @param creatorId account ID
+     * @throws DAOException signals, that statement was not executed successfully
+     */
     public boolean addGame(int bet, int creatorId) throws DAOException {
         try (PreparedStatement statement = connection.prepareStatement(SQL_ADD_GAME)) {
             LocalDateTime localDateTime = LocalDateTime.now();

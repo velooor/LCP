@@ -31,7 +31,7 @@ function hideAllButtons(){
     document.getElementById("playerPass").style.display = "none";
     document.getElementById("creatorPass").style.display = "none";
     document.getElementById("creatorMove").style.display = "none";
-    document.getElementById("playAgain").style.display = "none";
+    document.getElementById("toWaitingGame").style.display = "none";
 }
 
 function infoUpdate() {
@@ -89,10 +89,7 @@ function infoUpdate() {
 };
 
 function showPlayAgainButton() {
-    if(currentAccountId == creatorId){
-        document.getElementById("playAgain").style.display = "block";
-    }
-
+    document.getElementById("toWaitingGame").style.display = "block";
 }
 
 function playerWon() {

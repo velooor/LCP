@@ -5,11 +5,16 @@ import by.training.zakharchenya.courseproject.database.ConnectionPool;
 import by.training.zakharchenya.courseproject.entity.Account;
 import by.training.zakharchenya.courseproject.exception.DAOException;
 import by.training.zakharchenya.courseproject.validator.AccountValidator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class SingUpLogic {
+
+    private static final Logger LOG = LogManager.getLogger();
     public enum Result {
         EXCEPTION, VALID, INVALID_LOGIN, INVALID_EMAIL, INVALID_PASSWORD, PASSWORDS_NOT_EQUALS, LOGIN_NOT_UNIQUE
     }
@@ -35,7 +40,7 @@ public class SingUpLogic {
             connection.commit();
             return res;
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with sign up operation.", e);
             return Result.EXCEPTION;
         }
     }

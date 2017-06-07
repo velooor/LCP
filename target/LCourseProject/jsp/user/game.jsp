@@ -104,7 +104,7 @@
             <div class="panel panel-info col-lg-6">
                 <div class="panel-body">
                     <h1 id="casinoPoints" class="points text-center"><b>0</b></h1>
-                    <h4 class="text-center"><img class="img-circle" height="70" width="70" src="${context}/main?command=loadImage&id=${account.accountId}&src=account" alt="Avatar"></h4>
+                    <h4 class="text-center"><img class="img-circle" height="70" width="70" src="${context}/images/casino.jpg" alt="Avatar"></h4>
                     <h3 class="casino text-center"><fmt:message key="label.casino"/></h3>
                     <h4 id="casinoEndResult" class="text-center"></h4>
                 </div>

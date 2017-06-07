@@ -64,7 +64,7 @@ public class ChangeAccountLogic {
 
                 connection.commit();
             } catch (SQLException | DAOException e) {
-                throw new LogicException("Problems with updating account avatar.", e);
+                throw new LogicException("Problems with updating password.", e);
             }
         }else{
             res = Result.PASSWORD_NOT_EQUALS;

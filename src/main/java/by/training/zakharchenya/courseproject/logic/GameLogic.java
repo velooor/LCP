@@ -6,17 +6,19 @@ import by.training.zakharchenya.courseproject.database.ConnectionPool;
 import by.training.zakharchenya.courseproject.entity.game.MultiGame;
 import by.training.zakharchenya.courseproject.exception.DAOException;
 import by.training.zakharchenya.courseproject.exception.LogicException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Random;
 
-/**
- * Created by Lagarde on 18.05.2017.
- */
+
 public class GameLogic {
 
+    private static final Logger LOG = LogManager.getLogger();
     public static void createGame(int bet, int creatorId) throws LogicException {
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
 
@@ -34,7 +36,7 @@ public class GameLogic {
             gameDAO.updateMultiGame(gameId, playerId);
 
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with game creation operation.", e);
+            throw new LogicException("Problems with multigame creation operation.", e);
         }
     }
     public static void updateMultiGame(MultiGame game) throws LogicException {
@@ -44,7 +46,7 @@ public class GameLogic {
             gameDAO.updateMultiGame(game);
 
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with game creation operation.", e);
+            throw new LogicException("Problems with multi game updating operation.", e);
         }
     }
     public static MultiGame findMultiGame(int gameId) throws LogicException {
@@ -54,7 +56,7 @@ public class GameLogic {
             return gameDAO.findMultiGame(gameId);
 
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with game creation operation.", e);
+            throw new LogicException("Problems with multi game finding operation.", e);
         }
     }
 
@@ -66,7 +68,7 @@ public class GameLogic {
             return gameDAO.findWaitingGames();
 
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with multi game loading operation.", e);
             return null;
         }
     }
@@ -86,7 +88,7 @@ public class GameLogic {
             return result;
 
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with active multi game loading operation.", e);
             return null;
         }
     }
@@ -97,7 +99,7 @@ public class GameLogic {
             gameDAO.removeGameById(gameId);
 
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with multi game deleting operation.", e);
 
         }
     }
@@ -153,7 +155,7 @@ public class GameLogic {
         try{
             MoneyInfoLogic.finishMultiGame(game.getPlayer().getAccountId(), game.getCreator().getAccountId(), game.getRate());
         }catch (LogicException e){
-
+            LOG.log(Level.ERROR, "Problems with multi game finishing operation.", e);
         }
     }
     public static void creatorWon(MultiGame game){
@@ -162,7 +164,7 @@ public class GameLogic {
         try{
             MoneyInfoLogic.finishMultiGame(game.getCreator().getAccountId(), game.getPlayer().getAccountId(), game.getRate());
         }catch (LogicException e){
-
+            LOG.log(Level.ERROR, "Problems with multi game finishing operation.", e);
         }
     }
     public static void draw(MultiGame game){
@@ -172,7 +174,7 @@ public class GameLogic {
         try{
             MoneyInfoLogic.finishMultiGameDraw(game.getPlayer().getAccountId(), game.getCreator().getAccountId(), game.getRate());
         }catch (LogicException e){
-
+            LOG.log(Level.ERROR, "Problems with multi game finishing operation.", e);
         }
     }
 }

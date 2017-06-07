@@ -20,7 +20,7 @@ public class MoneyInfoLogic {
             moneyDAO.addPayment(accountId, creditcard, ccv, month, year, amount);
             return amount;
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with updating name and surname.", e);
+            throw new LogicException("Problems with processPayment operation.", e);
         }
     }
     public static void keepRate(int accountId, int rate) throws LogicException {
@@ -31,7 +31,7 @@ public class MoneyInfoLogic {
             moneyDAO.topUpBlockedAmount(accountId, rate);
             connection.commit();
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with updating name and surname.", e);
+            throw new LogicException("Problems with keepRate operation.", e);
         }
     }
     public static void registerCreditAccount(int accountId) throws LogicException {
@@ -39,7 +39,7 @@ public class MoneyInfoLogic {
             AccountDAO accountDAO = new AccountDAO(connection);
             accountDAO.addMoneyAccount(accountId);
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with updating name and surname.", e);
+            throw new LogicException("Problems with registerCreditAccount operation.", e);
         }
     }
     public static int countCreditBalance(int accountId) throws LogicException {
@@ -47,7 +47,7 @@ public class MoneyInfoLogic {
             MoneyDAO moneyDAO = new MoneyDAO(connection);
             return moneyDAO.countCreditBalance(accountId);
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with updating name and surname.", e);
+            throw new LogicException("Problems with countCreditBalance operation.", e);
         }
     }
 
@@ -56,7 +56,7 @@ public class MoneyInfoLogic {
             MoneyDAO moneyDAO = new MoneyDAO(connection);
             return moneyDAO.showCreditCardInfo(accountId);
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with updating name and surname.", e);
+            throw new LogicException("Problems with showCreditCardInfo operation.", e);
         }
     }
 
@@ -65,7 +65,7 @@ public class MoneyInfoLogic {
             MoneyDAO moneyDAO = new MoneyDAO(connection);
             moneyDAO.downBlockedAmount(accountId, rate);
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with updating name and surname.", e);
+            throw new LogicException("Problems with casinoWon operation.", e);
         }
     }
     public static void playerWon(int accountId, int rate) throws LogicException {
@@ -76,7 +76,7 @@ public class MoneyInfoLogic {
             moneyDAO.topUpAmount(accountId, 2*rate);
             connection.commit();
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with updating name and surname.", e);
+            throw new LogicException("Problems with playerWon operation.", e);
         }
     }
     public static void finishMultiGame(int winnerId, int loserId, int rate) throws LogicException {
@@ -88,7 +88,7 @@ public class MoneyInfoLogic {
             moneyDAO.topUpAmount(winnerId, 2*rate);
             connection.commit();
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with updating name and surname.", e);
+            throw new LogicException("Problems with finishMultiGame operation.", e);
         }
     }
     public static void finishMultiGameDraw(int playerId, int creatorId, int rate) throws LogicException {
@@ -101,7 +101,7 @@ public class MoneyInfoLogic {
             moneyDAO.topUpAmount(creatorId, rate);
             connection.commit();
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with updating name and surname.", e);
+            throw new LogicException("Problems with finishMultiGameDraw operation.", e);
         }
     }
     public static void topUpAccount(int accountId, int rate) throws LogicException {
@@ -112,7 +112,7 @@ public class MoneyInfoLogic {
             moneyDAO.topUpAmount(accountId, rate);
             connection.commit();
         } catch (SQLException | DAOException e) {
-            throw new LogicException("Problems with updating name and surname.", e);
+            throw new LogicException("Problems with topUpAccount operation.", e);
         }
     }
 

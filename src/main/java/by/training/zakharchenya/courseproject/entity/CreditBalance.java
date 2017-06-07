@@ -3,9 +3,6 @@ package by.training.zakharchenya.courseproject.entity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by Lagarde on 08.05.2017.
- */
 public class CreditBalance {
     private int moneyAmount;
     private int dept;

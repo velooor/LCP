@@ -1,8 +1,5 @@
 package by.training.zakharchenya.courseproject.validator;
 
-/**
- * Created by Linaelias Velore on 17.03.2017.
- */
 public class AccountValidator {
 
     private static final String LOGIN_REGEXP = "^\\p{L}(\\p{L}|\\p{N}|[_])*$";

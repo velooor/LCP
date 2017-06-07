@@ -98,9 +98,9 @@
     <br><br>
     <button type="button" id="creatorPass" class="btn" onclick="pass()" ><fmt:message key="label.pass"/></button>
 
-    <div class="row">
-        <button type="button" id="playAgain" class="btn btn-primary" data-toggle="modal" ><fmt:message key="label.play.again"/></button>
-    </div>
+    <form id="toWaitingGame" action="${context}/jsp/user/waitForGame.jsp">
+        <button type="submit" class="btn btn-primary col-lg-12"><fmt:message key="label.play.again"/></button>
+    </form>
 
     <br><br><br><br><br>
 

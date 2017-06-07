@@ -1,8 +1,5 @@
 package by.training.zakharchenya.courseproject.manager;
 
-/**
- * Created by Lagarde on 23.03.2017.
- */
 public class MessageConstants {
     public static final String ERROR_LOGIN                          = "message.loginerror";
     public static final String MESSAGE_INVALID_IMAGE                = "message.ivalidimage";

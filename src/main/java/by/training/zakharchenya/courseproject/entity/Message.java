@@ -2,9 +2,6 @@ package by.training.zakharchenya.courseproject.entity;
 
 import java.time.LocalDateTime;
 
-/**
- * Created by Lagarde on 04.04.2017.
- */
 public class Message {
     private int messageId;
     private Account creator;

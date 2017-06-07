@@ -7,15 +7,16 @@ import by.training.zakharchenya.courseproject.entity.Account;
 import by.training.zakharchenya.courseproject.entity.Message;
 import by.training.zakharchenya.courseproject.exception.DAOException;
 import by.training.zakharchenya.courseproject.validator.AccountValidator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by Lagarde on 02.04.2017.
- */
 public class MailLogic {
+    private static final Logger LOG = LogManager.getLogger();
     public enum Result {
         EXCEPTION, SUCCESS, WRONG_LOGIN, INCORRECT_LOGIN
     }
@@ -28,7 +29,7 @@ public class MailLogic {
             if(!forAdmin){
                 if (!AccountValidator.validateLogin(login)) {
                     res = MailLogic.Result.INCORRECT_LOGIN;
-                } else if(!accountDAO.checkLoginUniqueness(login)){
+                } else if(accountDAO.checkLoginUniqueness(login)){
                     res = MailLogic.Result.WRONG_LOGIN;
                 } else {
                     mailDAO.addMessage(login, theme, message, creatorId, false, accountDAO);
@@ -41,7 +42,7 @@ public class MailLogic {
             connection.commit();
             return res;
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with sendMessage operation.", e);
             return MailLogic.Result.EXCEPTION;
         }
     }
@@ -58,7 +59,7 @@ public class MailLogic {
             connection.commit();
             return res;
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with deleteMessage operation.", e);
             return MailLogic.Result.EXCEPTION;
         }
     }
@@ -74,7 +75,7 @@ public class MailLogic {
             connection.commit();
             return res;
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with updateMessage operation.", e);
             return MailLogic.Result.EXCEPTION;
         }
     }
@@ -88,7 +89,7 @@ public class MailLogic {
             connection.commit();
             return result;
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with loadAllUserIncomingMessages operation.", e);
             return null;
         }
     }

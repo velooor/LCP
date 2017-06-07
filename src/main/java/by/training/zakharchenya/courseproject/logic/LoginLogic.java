@@ -5,11 +5,15 @@ import by.training.zakharchenya.courseproject.database.ConnectionPool;
 import by.training.zakharchenya.courseproject.entity.Account;
 import by.training.zakharchenya.courseproject.exception.DAOException;
 import by.training.zakharchenya.courseproject.exception.LogicException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class LoginLogic {
+    private static final Logger LOG = LogManager.getLogger();
     public static boolean checkLogin(String emailOrLogin, String password) {
         try (Connection connection = ConnectionPool.getInstance().getConnection()){
             connection.setAutoCommit(false);
@@ -19,7 +23,7 @@ public class LoginLogic {
             connection.commit();
             return result;
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with checkLogin operation.", e);
             return false;
         }
     }
@@ -30,7 +34,7 @@ public class LoginLogic {
             Account result = accountDAO.findAccountByLogin(login);
             return result;
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with getAccount operation.", e);
             return null;
         }
     }
@@ -40,7 +44,7 @@ public class LoginLogic {
 
             return accountDAO.findAccountByID(id);
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Problems with getAccount operation.", e);
             return null;
         }
     }

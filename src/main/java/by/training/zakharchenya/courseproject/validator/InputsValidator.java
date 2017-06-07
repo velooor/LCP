@@ -1,8 +1,5 @@
 package by.training.zakharchenya.courseproject.validator;
 
-/**
- * Created by Lagarde on 27.05.2017.
- */
 public class InputsValidator {
     private static final String ADMIN_SETTINGS_RATE_REGEXP = "^[0-9]{1,6}$";
     private static final String ADMIN_SETTINGS_POINTS_REGEXP = "^[0-9]{1,2}$";

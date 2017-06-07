@@ -6,15 +6,17 @@ import by.training.zakharchenya.courseproject.database.ConnectionPool;
 import by.training.zakharchenya.courseproject.entity.Account;
 import by.training.zakharchenya.courseproject.entity.Message;
 import by.training.zakharchenya.courseproject.exception.DAOException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-/**
- * Created by Lagarde on 13.04.2017.
- */
 public class AdminLogic {
+
+    private static final Logger LOG = LogManager.getLogger();
     public enum Result {
         EXCEPTION, SUCCESS, WRONG_LOGIN, INCORRECT_LOGIN
     }
@@ -30,7 +32,7 @@ public class AdminLogic {
             connection.commit();
             return res;
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Errors during updateUserStatus.", e);
             return Result.EXCEPTION;
         }
     }
@@ -44,7 +46,7 @@ public class AdminLogic {
             connection.commit();
             return result;
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Errors during loadAllUsers.", e);
             return null;
         }
     }
@@ -58,7 +60,7 @@ public class AdminLogic {
             connection.commit();
             return result;
         } catch (SQLException | DAOException e) {
-            //throw new LogicException("Problems with signIn operation.", e);
+            LOG.log(Level.ERROR, "Errors during loadParams.", e);
             return null;
         }
     }
