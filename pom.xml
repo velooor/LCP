@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>LCourseProject</groupId>
-  <artifactId>LCourseProject</artifactId>
+  <groupId>LV Course Project</groupId>
+  <artifactId>LV Course Project</artifactId>
   <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>LCourseProject Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+  <version>2.0-SNAPSHOT</version>
+  <name>LV Course Project Web application - Casino</name>
+  <url>https://github.com/velooor</url>
   <dependencies>
 
     <dependency>
