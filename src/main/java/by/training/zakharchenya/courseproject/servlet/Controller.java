@@ -62,6 +62,5 @@ public class Controller extends HttpServlet {
             result = ConfigurationManager.getProperty(PAGE_ERROR);
             response.sendRedirect(request.getContextPath() + result);
         }
-
     }
 }

@@ -3,7 +3,6 @@ package by.training.zakharchenya.courseproject.filter;
 import by.training.zakharchenya.courseproject.entity.Account;
 import by.training.zakharchenya.courseproject.logic.AdminLogic;
 import by.training.zakharchenya.courseproject.servlet.Constants;
-import com.mysql.cj.api.Session;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
