@@ -15,7 +15,7 @@ import java.util.List;
 public class AccountDAO extends AbstractDAO {
 
     private static final String SQL_ADD_ACCOUNT ="INSERT INTO `account` " +"(`name`, `surname`, `login`, `email`, `password`, `birthDate`, `admin`, `status`) " +"VALUES (?, ?, ?, ?, ?, ?, FALSE, 'active')";
-    private static final String SQL_ADD_MONEY_ACCOUNT ="INSERT INTO `creditcardinfo` SET  `account` = ?, `moneyAmount` = 0, `blockedMoney` = 0";
+    private static final String SQL_ADD_MONEY_ACCOUNT ="INSERT INTO `creditCardInfo` SET  `account` = ?, `moneyAmount` = 0, `blockedMoney` = 0";
     private static final String SQL_CHECK_PASSWORD_BY_EMAIL_OR_LOGIN = "SELECT 1 FROM `account` WHERE `login` = ? AND `password` = ?";
 
     private static final String SQL_CHECK_LOGIN_UNIQUENESS = "SELECT 1 FROM `account` WHERE `login` = ?";

@@ -11,20 +11,20 @@ import java.util.List;
  */
 public class MoneyDAO extends AbstractDAO {
 
-    private static final String SQL_ADD_PAYMENT ="UPDATE `creditcardinfo` SET `creditCard`=?, `cardValid`=?, `secretCode`=?, `moneyAmount`=`moneyAmount`+? "
+    private static final String SQL_ADD_PAYMENT ="UPDATE `creditCardInfo` SET `creditCard`=?, `cardValid`=?, `secretCode`=?, `moneyAmount`=`moneyAmount`+? "
             +" WHERE `account` = ?";
-    private static final String SQL_UPDATE_AMOUNT ="UPDATE `creditcardinfo` SET `moneyAmount`= ? "
+    private static final String SQL_UPDATE_AMOUNT ="UPDATE `creditCardInfo` SET `moneyAmount`= ? "
             +" WHERE `account` = ?";
-    private static final String SQL_DOWN_AMOUNT ="UPDATE `creditcardinfo` SET `moneyAmount`=`moneyAmount`-? "
+    private static final String SQL_DOWN_AMOUNT ="UPDATE `creditCardInfo` SET `moneyAmount`=`moneyAmount`-? "
             +" WHERE `account` = ?";
-    private static final String SQL_DOWN_BLOCKED_AMOUNT ="UPDATE `creditcardinfo` SET `blockedMoney`=`blockedMoney`-? "
+    private static final String SQL_DOWN_BLOCKED_AMOUNT ="UPDATE `creditCardInfo` SET `blockedMoney`=`blockedMoney`-? "
             +" WHERE `account` = ?";
-    private static final String SQL_TOPUP_BLOCKED_AMOUNT ="UPDATE `creditcardinfo` SET `blockedMoney`=`blockedMoney`+ ? "
+    private static final String SQL_TOPUP_BLOCKED_AMOUNT ="UPDATE `creditCardInfo` SET `blockedMoney`=`blockedMoney`+ ? "
             +" WHERE `account` = ?";
-    private static final String SQL_TOPUP_AMOUNT ="UPDATE `creditcardinfo` SET `moneyAmount`=`moneyAmount`+ ? "
+    private static final String SQL_TOPUP_AMOUNT ="UPDATE `creditCardInfo` SET `moneyAmount`=`moneyAmount`+ ? "
             +" WHERE `account` = ?";
-    private static final String SQL_COUNT_MONEY_BALANCE = "SELECT SUM(moneyAmount) AS MoneyBalance FROM `creditcardinfo` WHERE (`account` = ?)";
-    private static final String SQL_FIND_CREDIT_CARD_INFO = "SELECT `creditCard`, `cardValid` FROM `creditcardinfo` WHERE (`account` = ?)";
+    private static final String SQL_COUNT_MONEY_BALANCE = "SELECT SUM(moneyAmount) AS MoneyBalance FROM `creditCardInfo` WHERE (`account` = ?)";
+    private static final String SQL_FIND_CREDIT_CARD_INFO = "SELECT `creditCard`, `cardValid` FROM `creditCardInfo` WHERE (`account` = ?)";
 
     private static final String BALANCE = "MoneyBalance";
     private static final String CREDIT_CARD_COLUMN = "creditCard";
