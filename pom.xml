@@ -79,7 +79,7 @@
   </dependencies>
 
   <build>
-    <finalName>LCourseProject</finalName>
+    <finalName>LCP</finalName>
     <plugins>
       <!-- Set JDK Compiler Level -->
       <plugin>
